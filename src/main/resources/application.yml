@@ -1,0 +1,40 @@
+cotek:
+  com-port: /dev/ttyUSB0
+  read-timeout-in-millis: 6000
+  auto-power-on: false
+  auto-power-on-interval-in-millis: 1800000
+
+logreposit:
+  enabled: false
+  api-base-url: "https://api.logreposit.com/v1/"
+  collect-interval: 60000
+  device-token: "INVALID"
+  api-client-retry-count: 5
+  api-client-retry-initial-back-off-interval: 1200
+  api-client-retry-back-off-multiplier: 1.5
+
+logging:
+  file: logs/logreposit-cotek-api-service.log
+  pattern:
+    console: "%clr(%d{\"yyyy-MM-dd'T'HH:mm:ss,SSSXXX\", UTC}){faint} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID: }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr([%X{correlationId:-}]){yellow} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+    file: "%d{\"yyyy-MM-dd'T'HH:mm:ss,SSSXXX\", UTC} ${LOG_LEVEL_PATTERN:%5p} ${PID: } --- [%t] [%X{correlationId:-}] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+
+server:
+    port: "${port:8080}"
+
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    serialization:
+      write-dates-as-timestamps: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+    favicon:
+      enabled: false
+  resources:
+    add-mappings: false
