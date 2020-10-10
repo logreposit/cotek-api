@@ -1,4 +1,4 @@
-FROM openjdk:12
+FROM openjdk:11-jre
 
 MAINTAINER Dominic Miglar <dominic.miglar@netunix.at>
 
