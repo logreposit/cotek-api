@@ -2,8 +2,8 @@
 
 | branch | CI build | test coverage |
 |--------|:--------:|--------------:|
-| master  | [![CircleCI](https://circleci.com/gh/logreposit/cotek-api-service/tree/master.svg?style=shield)](https://circleci.com/gh/logreposit/cotek-api-service/tree/master)   | [![codecov.io](https://codecov.io/gh/logreposit/cotek-api-service/branch/master/graphs/badge.svg)](https://codecov.io/gh/logreposit/cotek-api-service/branch/master/graphs/badge.svg)   |
-| develop | [![CircleCI](https://circleci.com/gh/logreposit/cotek-api-service/tree/develop.svg?style=shield)](https://circleci.com/gh/logreposit/cotek-api-service/tree/develop) | [![codecov.io](https://codecov.io/gh/logreposit/cotek-api-service/branch/develop/graphs/badge.svg)](https://codecov.io/gh/logreposit/cotek-api-service/branch/develop/graphs/badge.svg) |
+| master  | [![CircleCI](https://circleci.com/gh/logreposit/cotek-api/tree/master.svg?style=shield)](https://circleci.com/gh/logreposit/cotek-api/tree/master)   | [![codecov.io](https://codecov.io/gh/logreposit/cotek-api/branch/master/graphs/badge.svg)](https://codecov.io/gh/logreposit/cotek-api/branch/master/graphs/badge.svg)   |
+| develop | [![CircleCI](https://circleci.com/gh/logreposit/cotek-api/tree/develop.svg?style=shield)](https://circleci.com/gh/logreposit/cotek-api/tree/develop) | [![codecov.io](https://codecov.io/gh/logreposit/cotek-api/branch/develop/graphs/badge.svg)](https://codecov.io/gh/logreposit/cotek-api/branch/develop/graphs/badge.svg) |
 
 Interface to communicate with a Cotek Inverter over HTTP.
 
