@@ -16,9 +16,9 @@
 	<description>REST API for communication with Cotek Inverters</description>
 
 	<properties>
-		<java.version>12</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>11</java.version>
     </properties>
 
 	<dependencies>
