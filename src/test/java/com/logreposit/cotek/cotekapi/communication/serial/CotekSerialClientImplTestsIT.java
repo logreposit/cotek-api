@@ -1,18 +1,20 @@
 package com.logreposit.cotek.cotekapi.communication.serial;
 
 import com.logreposit.cotek.cotekapi.configuration.CotekConfiguration;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.MethodSorters;
+import org.assertj.core.data.Offset;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@RunWith(SpringRunner.class)
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(SpringExtension.class)
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class CotekSerialClientImplTestsIT
 {
     private CotekSerialClientImpl cotekSerialClient;
@@ -20,7 +22,7 @@ public class CotekSerialClientImplTestsIT
     @MockBean
     private CotekConfiguration cotekConfiguration;
 
-    @Before
+    @BeforeEach
     public void setUp()
     {
         this.cotekSerialClient = new CotekSerialClientImpl(this.cotekConfiguration);
@@ -40,7 +42,7 @@ public class CotekSerialClientImplTestsIT
     {
         int frequency = this.cotekSerialClient.getOutputFrequency();
 
-        Assert.assertEquals(50, frequency);
+        assertThat(frequency).isEqualTo(50);
     }
 
     @Test
@@ -50,7 +52,7 @@ public class CotekSerialClientImplTestsIT
 
         int outputVoltage = this.cotekSerialClient.getOutputVoltage();
 
-        Assert.assertEquals(230000, outputVoltage, 3000);
+        assertThat(outputVoltage).isCloseTo(230000, Offset.offset(3000));
     }
 
     @Test
@@ -58,7 +60,7 @@ public class CotekSerialClientImplTestsIT
     {
         int outputCurrent = this.cotekSerialClient.getOutputCurrent();
 
-        Assert.assertEquals(0, outputCurrent);
+        assertThat(outputCurrent).isEqualTo(0);
     }
 
     @Test
@@ -66,7 +68,7 @@ public class CotekSerialClientImplTestsIT
     {
         int outputPower = this.cotekSerialClient.getOutputPower();
 
-        Assert.assertEquals(2, outputPower, 2);
+        assertThat(outputPower).isCloseTo(2, Offset.offset(2));
     }
 
     @Test
@@ -74,7 +76,7 @@ public class CotekSerialClientImplTestsIT
     {
         int inputVoltage = this.cotekSerialClient.getInputVoltage();
 
-        Assert.assertEquals(12000.0, inputVoltage, 3000.0);
+        assertThat(inputVoltage).isCloseTo(12000, Offset.offset(3000));
     }
 
     @Test
