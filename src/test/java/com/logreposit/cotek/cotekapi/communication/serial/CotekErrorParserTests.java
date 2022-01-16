@@ -1,11 +1,12 @@
 package com.logreposit.cotek.cotekapi.communication.serial;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 public class CotekErrorParserTests
 {
@@ -18,17 +19,18 @@ public class CotekErrorParserTests
         List<Byte> byteList   = Arrays.asList(ArrayUtils.toObject(bytes));
         CotekError cotekError = CotekErrorParser.parse(byteList);
 
-        Assert.assertNotNull(cotekError);
-        Assert.assertFalse(cotekError.isUnderVoltageProtection());
-        Assert.assertFalse(cotekError.isOverVoltageProtection());
-        Assert.assertFalse(cotekError.isOverLoadProtectionLow());
-        Assert.assertFalse(cotekError.isOverLoadProtectionMiddle());
-        Assert.assertFalse(cotekError.isOverLoadProtectionHigh());
-        Assert.assertFalse(cotekError.isOutputOverCurrentProtection());
-        Assert.assertFalse(cotekError.isOverTemperatureProtection());
-        Assert.assertFalse(cotekError.isUnderTemperatureProtection());
-        Assert.assertFalse(cotekError.isSoftStartFailProtection());
-        Assert.assertFalse(cotekError.isPowerOffProtection());
+        assertSoftly(softly -> {
+            softly.assertThat(cotekError.isUnderVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionLow()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionMiddle()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionHigh()).isFalse();
+            softly.assertThat(cotekError.isOutputOverCurrentProtection()).isFalse();
+            softly.assertThat(cotekError.isOverTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isUnderTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isSoftStartFailProtection()).isFalse();
+            softly.assertThat(cotekError.isPowerOffProtection()).isFalse();
+        });
     }
 
     @Test
@@ -43,17 +45,18 @@ public class CotekErrorParserTests
         List<Byte> byteList   = Arrays.asList(ArrayUtils.toObject(bytes));
         CotekError cotekError = CotekErrorParser.parse(byteList);
 
-        Assert.assertNotNull(cotekError);
-        Assert.assertTrue(cotekError.isOverLoadProtectionLow());
-        Assert.assertFalse(cotekError.isSoftStartFailProtection());
-        Assert.assertFalse(cotekError.isPowerOffProtection());
-        Assert.assertFalse(cotekError.isUnderVoltageProtection());
-        Assert.assertFalse(cotekError.isOverVoltageProtection());
-        Assert.assertFalse(cotekError.isOverLoadProtectionMiddle());
-        Assert.assertFalse(cotekError.isOverLoadProtectionHigh());
-        Assert.assertFalse(cotekError.isOverTemperatureProtection());
-        Assert.assertFalse(cotekError.isUnderTemperatureProtection());
-        Assert.assertFalse(cotekError.isOutputOverCurrentProtection());
+        assertSoftly(softly -> {
+            softly.assertThat(cotekError.isUnderVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionLow()).isTrue();
+            softly.assertThat(cotekError.isOverLoadProtectionMiddle()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionHigh()).isFalse();
+            softly.assertThat(cotekError.isOutputOverCurrentProtection()).isFalse();
+            softly.assertThat(cotekError.isOverTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isUnderTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isSoftStartFailProtection()).isFalse();
+            softly.assertThat(cotekError.isPowerOffProtection()).isFalse();
+        });
     }
 
     @Test
@@ -68,17 +71,18 @@ public class CotekErrorParserTests
         List<Byte> byteList   = Arrays.asList(ArrayUtils.toObject(bytes));
         CotekError cotekError = CotekErrorParser.parse(byteList);
 
-        Assert.assertNotNull(cotekError);
-        Assert.assertFalse(cotekError.isOverLoadProtectionLow());
-        Assert.assertTrue(cotekError.isSoftStartFailProtection());
-        Assert.assertFalse(cotekError.isPowerOffProtection());
-        Assert.assertFalse(cotekError.isUnderVoltageProtection());
-        Assert.assertFalse(cotekError.isOverVoltageProtection());
-        Assert.assertFalse(cotekError.isOverLoadProtectionMiddle());
-        Assert.assertFalse(cotekError.isOverLoadProtectionHigh());
-        Assert.assertFalse(cotekError.isOverTemperatureProtection());
-        Assert.assertFalse(cotekError.isUnderTemperatureProtection());
-        Assert.assertFalse(cotekError.isOutputOverCurrentProtection());
+        assertSoftly(softly -> {
+            softly.assertThat(cotekError.isUnderVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionLow()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionMiddle()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionHigh()).isFalse();
+            softly.assertThat(cotekError.isOutputOverCurrentProtection()).isFalse();
+            softly.assertThat(cotekError.isOverTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isUnderTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isSoftStartFailProtection()).isTrue();
+            softly.assertThat(cotekError.isPowerOffProtection()).isFalse();
+        });
     }
 
     @Test
@@ -93,17 +97,18 @@ public class CotekErrorParserTests
         List<Byte> byteList   = Arrays.asList(ArrayUtils.toObject(bytes));
         CotekError cotekError = CotekErrorParser.parse(byteList);
 
-        Assert.assertNotNull(cotekError);
-        Assert.assertFalse(cotekError.isOverLoadProtectionLow());
-        Assert.assertFalse(cotekError.isSoftStartFailProtection());
-        Assert.assertTrue(cotekError.isPowerOffProtection());
-        Assert.assertFalse(cotekError.isUnderVoltageProtection());
-        Assert.assertFalse(cotekError.isOverVoltageProtection());
-        Assert.assertFalse(cotekError.isOverLoadProtectionMiddle());
-        Assert.assertFalse(cotekError.isOverLoadProtectionHigh());
-        Assert.assertFalse(cotekError.isOverTemperatureProtection());
-        Assert.assertFalse(cotekError.isUnderTemperatureProtection());
-        Assert.assertFalse(cotekError.isOutputOverCurrentProtection());
+        assertSoftly(softly -> {
+            softly.assertThat(cotekError.isUnderVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionLow()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionMiddle()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionHigh()).isFalse();
+            softly.assertThat(cotekError.isOutputOverCurrentProtection()).isFalse();
+            softly.assertThat(cotekError.isOverTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isUnderTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isSoftStartFailProtection()).isFalse();
+            softly.assertThat(cotekError.isPowerOffProtection()).isTrue();
+        });
     }
 
     @Test
@@ -118,17 +123,18 @@ public class CotekErrorParserTests
         List<Byte> byteList   = Arrays.asList(ArrayUtils.toObject(bytes));
         CotekError cotekError = CotekErrorParser.parse(byteList);
 
-        Assert.assertNotNull(cotekError);
-        Assert.assertFalse(cotekError.isOverLoadProtectionLow());
-        Assert.assertFalse(cotekError.isSoftStartFailProtection());
-        Assert.assertFalse(cotekError.isPowerOffProtection());
-        Assert.assertFalse(cotekError.isUnderVoltageProtection());
-        Assert.assertFalse(cotekError.isOverVoltageProtection());
-        Assert.assertFalse(cotekError.isOverLoadProtectionMiddle());
-        Assert.assertFalse(cotekError.isOverLoadProtectionHigh());
-        Assert.assertFalse(cotekError.isOverTemperatureProtection());
-        Assert.assertFalse(cotekError.isUnderTemperatureProtection());
-        Assert.assertTrue(cotekError.isOutputOverCurrentProtection());
+        assertSoftly(softly -> {
+            softly.assertThat(cotekError.isUnderVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionLow()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionMiddle()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionHigh()).isFalse();
+            softly.assertThat(cotekError.isOutputOverCurrentProtection()).isTrue();
+            softly.assertThat(cotekError.isOverTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isUnderTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isSoftStartFailProtection()).isFalse();
+            softly.assertThat(cotekError.isPowerOffProtection()).isFalse();
+        });
     }
 
     @Test
@@ -145,16 +151,17 @@ public class CotekErrorParserTests
         List<Byte> byteList   = Arrays.asList(ArrayUtils.toObject(bytes));
         CotekError cotekError = CotekErrorParser.parse(byteList);
 
-        Assert.assertNotNull(cotekError);
-        Assert.assertFalse(cotekError.isOverLoadProtectionLow());
-        Assert.assertFalse(cotekError.isSoftStartFailProtection());
-        Assert.assertFalse(cotekError.isPowerOffProtection());
-        Assert.assertFalse(cotekError.isUnderVoltageProtection());
-        Assert.assertTrue(cotekError.isOverVoltageProtection());
-        Assert.assertTrue(cotekError.isOverLoadProtectionMiddle());
-        Assert.assertFalse(cotekError.isOverLoadProtectionHigh());
-        Assert.assertFalse(cotekError.isOverTemperatureProtection());
-        Assert.assertFalse(cotekError.isUnderTemperatureProtection());
-        Assert.assertTrue(cotekError.isOutputOverCurrentProtection());
+        assertSoftly(softly -> {
+            softly.assertThat(cotekError.isUnderVoltageProtection()).isFalse();
+            softly.assertThat(cotekError.isOverVoltageProtection()).isTrue();
+            softly.assertThat(cotekError.isOverLoadProtectionLow()).isFalse();
+            softly.assertThat(cotekError.isOverLoadProtectionMiddle()).isTrue();
+            softly.assertThat(cotekError.isOverLoadProtectionHigh()).isFalse();
+            softly.assertThat(cotekError.isOutputOverCurrentProtection()).isTrue();
+            softly.assertThat(cotekError.isOverTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isUnderTemperatureProtection()).isFalse();
+            softly.assertThat(cotekError.isSoftStartFailProtection()).isFalse();
+            softly.assertThat(cotekError.isPowerOffProtection()).isFalse();
+        });
     }
 }
